@@ -2,7 +2,7 @@ FROM ubuntu:bionic
 
 LABEL version="1.6"
 LABEL description="REMnux Build Base Docker based on Ubuntu 18.04 LTS"
-LABEL maintainer="https://github.com/fetchered/remnux-build"
+LABEL maintainer="https://github.com/digitalsleuth/remnux-build"
 
 ENV TERM linux
 ENV DEBIAN_FRONTEND noninteractive
