@@ -1,6 +1,6 @@
 FROM ubuntu:bionic
 
-LABEL version="1.7"
+LABEL version="1.8"
 LABEL description="REMnux Build Base Docker based on Ubuntu 18.04 LTS"
 LABEL maintainer="https://github.com/digitalsleuth/remnux-build"
 
@@ -19,7 +19,8 @@ echo "deb-src http://www.inetsim.org/debian/ source/" >> /etc/apt/sources.list.d
 wget -O - https://www.inetsim.org/inetsim-archive-signing-key.asc | apt-key add - && \
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF && \
 echo "deb https://download.mono-project.com/repo/ubuntu stable-bionic main" | tee /etc/apt/sources.list.d/mono-official-stable.list && \
-curl -sL https://deb.nodesource.com/setup_12.x | bash -
+curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
+apt-get install -y nodejs
 
 RUN apt-get -qq update && \
 apt-get -qq install -y \
@@ -28,7 +29,7 @@ foremost git geany gnupg graphviz imagemagick inetsim inspircd jython libboost-a
 libdistorm64-1 libemail-outlook-message-perl libemu2 libffi-dev libfuzzy-dev libgraphviz-dev \
 libimage-exiftool-perl libjavassist-java libjpeg-dev libmozjs-52-0 libmozjs-52-dev libncurses5-dev libnetfilter-queue-dev *libolecf* \
 libpcap0.8-dev libsqlite3-dev libssl-dev libtool libxml2-dev libxslt1-dev libyara3 libyara-dev linux-image-4.15.0-91-generic ltrace mercurial mono-devel \
-netcat nginx ngrep nodejs openssh-server p7zip-full pdfresurrect pyew python3-capstone python3-dev python3-pip python3-venv python3-yara python-capstone \
+netcat nginx ngrep openssh-server p7zip-full pdfresurrect pyew python3-capstone python3-dev python3-pip python3-venv python3-yara python-capstone \
 python-dev python-hachoir-* python-httplib2 python-magic python-netifaces python-pip python-pyftpdlib python-urllib3 python-yapsy python-yara qpdf radare2 rhino rsakeyfind ruby-full scalpel \
 scite ssdeep ssh strace stunnel sudo swftools swig sysdig tcpdump tcpflow tcpick tcpxtract tor torsocks \
 unhide unicode upx-ucl vbindiff wireshark wxhexeditor xdg-utils xpdf yara zlib1g-dev && \
@@ -80,6 +81,3 @@ mkdir /home/remnux && \
 chown -R remnux:remnux /home/remnux && \
 usermod -a -G sudo remnux && \
 echo 'remnux:remnux' | chpasswd
-
-#EXPOSE 22
-#CMD ["/usr/sbin/sshd", "-D"]
