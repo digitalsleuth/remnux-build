@@ -19,8 +19,6 @@ echo "deb-src http://www.inetsim.org/debian/ source/" >> /etc/apt/sources.list.d
 wget -O - https://www.inetsim.org/inetsim-archive-signing-key.asc | apt-key add - && \
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF && \
 echo "deb https://download.mono-project.com/repo/ubuntu stable-bionic main" | tee /etc/apt/sources.list.d/mono-official-stable.list && \
-curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
-apt-get install -y nodejs
 
 RUN apt-get -qq update && \
 apt-get -qq install -y \
@@ -65,7 +63,10 @@ pip install ocrd-pyexiftool && pip3 install ocrd-pyexiftool && pip install antlr
 #RATDecoders and MalwareConfig requirement
 pip install --pre pype32 && \
 #RATDecoders functionality required pycryptodome be removed (No XOR support)
-pip3 uninstall pycryptodome -y
+pip3 uninstall pycryptodome -y && \
+#Install nodejs 12.x and npm
+curl -sL https://deb.nodesource.com/setup_12.x | bash - && \
+apt-get install -y nodejs
 
 RUN echo "    X11Forwarding yes" >> /etc/ssh/ssh_config && \
 echo "    X11DisplayOffset 10" >> /etc/ssh/ssh_config && \
