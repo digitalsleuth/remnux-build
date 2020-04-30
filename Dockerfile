@@ -1,6 +1,6 @@
 FROM ubuntu:bionic
 
-LABEL version="1.8"
+LABEL version="1.9"
 LABEL description="REMnux Build Base Docker based on Ubuntu 18.04 LTS"
 LABEL maintainer="https://github.com/digitalsleuth/remnux-build"
 
@@ -25,12 +25,15 @@ apt-get -qq install -y \
 aeskeyfind autoconf binutils build-essential ca-certificates clamav-daemon curl docker.io epic5 feh firefox \
 foremost git geany gnupg graphviz imagemagick inetsim inspircd jython libboost-all-dev libboost-python-dev libcanberra-gtk3-module \
 libdistorm64-1 libemail-outlook-message-perl libemu2 libffi-dev libfuzzy-dev libgraphviz-dev \
-libimage-exiftool-perl libjavassist-java libjpeg-dev libmozjs-52-0 libmozjs-52-dev libncurses5-dev libnetfilter-queue-dev *libolecf* \
+libimage-exiftool-perl libjavassist-java libjpeg-dev liblzma-dev libmozjs-52-0 libmozjs-52-dev libncurses5-dev libnetfilter-queue-dev *libolecf* \
 libpcap0.8-dev libsqlite3-dev libssl-dev libtool libxml2-dev libxslt1-dev libyara3 libyara-dev linux-image-4.15.0-91-generic ltrace mercurial mono-devel \
 netcat nginx ngrep openssh-server p7zip-full pdfresurrect pyew python3-capstone python3-dev python3-pip python3-venv python3-yara python-capstone \
 python-dev python-hachoir-* python-httplib2 python-magic python-netifaces python-pip python-pyftpdlib python-urllib3 python-yapsy python-yara qpdf radare2 rhino rsakeyfind ruby-full scalpel \
 scite ssdeep ssh strace stunnel sudo swftools swig sysdig tcpdump tcpflow tcpick tcpxtract tor torsocks \
 unhide unicode upx-ucl vbindiff wireshark wxhexeditor xdg-utils xpdf yara zlib1g-dev && \
+\
+#This mkdir is required for xdg-utils and xdg-desktop to install jd-gui properly
+mkdir /usr/share/desktop-directories && \
 \
 apt-get -qq install -y \
 cmake gdb bulk-extractor python-pypdf2 python3-pypdf2 python-intervaltree python3-intervaltree python-tabulate python3-tabulate \
