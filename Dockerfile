@@ -33,7 +33,7 @@ scite ssdeep ssh strace stunnel sudo swftools swig sysdig tcpdump tcpflow tcpick
 unhide unicode upx-ucl vbindiff wireshark wxhexeditor xdg-utils xpdf yara zlib1g-dev && \
 \
 #This mkdir is required for xdg-utils and xdg-desktop to install jd-gui properly
-mkdir /usr/share/desktop-directories && mkdir /usr/share/icons/hicolor && \
+mkdir /usr/share/desktop-directories && \
 \
 apt-get -qq install -y \
 cmake gdb bulk-extractor python-pypdf2 python3-pypdf2 python-intervaltree python3-intervaltree python-tabulate python3-tabulate \
