@@ -1,6 +1,6 @@
-FROM ubuntu:bionic
+FROM ubuntu:18.04
 
-LABEL version="1.9"
+LABEL version="1.10"
 LABEL description="REMnux Build Base Docker based on Ubuntu 18.04 LTS"
 LABEL maintainer="https://github.com/digitalsleuth/remnux-build"
 
@@ -22,7 +22,7 @@ echo "deb https://download.mono-project.com/repo/ubuntu stable-bionic main" | te
 
 RUN apt-get -qq update && \
 apt-get -qq install -y \
-aeskeyfind autoconf binutils build-essential ca-certificates clamav-daemon curl docker.io epic5 feh firefox \
+aeskeyfind autoconf binutils build-essential bundler ca-certificates clamav-daemon curl docker.io epic5 feh firefox \
 foremost git geany gnupg graphviz imagemagick inetsim inspircd jython libboost-all-dev libboost-python-dev libcanberra-gtk3-module \
 libdistorm64-1 libemail-outlook-message-perl libemu2 libffi-dev libfuzzy-dev libgraphviz-dev \
 libimage-exiftool-perl libjavassist-java libjpeg-dev liblzma-dev libmozjs-52-0 libmozjs-52-dev libncurses5-dev libnetfilter-queue-dev *libolecf* \
@@ -33,7 +33,7 @@ scite ssdeep ssh strace stunnel sudo swftools swig sysdig tcpdump tcpflow tcpick
 unhide unicode upx-ucl vbindiff wireshark wxhexeditor xdg-utils xpdf yara zlib1g-dev && \
 \
 #This mkdir is required for xdg-utils and xdg-desktop to install jd-gui properly
-mkdir /usr/share/desktop-directories && \
+mkdir /usr/share/desktop-directories && mkdir /usr/share/icons/hicolor && \
 \
 apt-get -qq install -y \
 cmake gdb bulk-extractor python-pypdf2 python3-pypdf2 python-intervaltree python3-intervaltree python-tabulate python3-tabulate \
